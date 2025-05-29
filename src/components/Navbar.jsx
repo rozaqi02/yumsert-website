@@ -77,7 +77,14 @@ function Navbar({ theme, toggleTheme }) {
               )}
             </AnimatePresence>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center space-x-2">
+            <motion.button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-gray-200 dark:bg-gray-600"
+              whileHover={{ scale: 1.1 }}
+            >
+              {theme === 'light' ? <FaMoon className="text-yumsert-blue" /> : <FaSun className="text-yumsert-orange" />}
+            </motion.button>
             <div className="hidden md:flex items-center space-x-4">
               {navItems.map((item) => (
                 <motion.a
@@ -93,13 +100,6 @@ function Navbar({ theme, toggleTheme }) {
                   {item.label}
                 </motion.a>
               ))}
-              <motion.button
-                onClick={toggleTheme}
-                className="p-2 rounded-full bg-gray-200 dark:bg-gray-600"
-                whileHover={{ scale: 1.1 }}
-              >
-                {theme === 'light' ? <FaMoon className="text-yumsert-blue" /> : <FaSun className="text-yumsert-orange" />}
-              </motion.button>
             </div>
             <div className="md:hidden flex items-center">
               <motion.button
