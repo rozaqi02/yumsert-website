@@ -181,10 +181,10 @@ function Home({ theme, toggleTheme }) {
             Ada pertanyaan? Atau mau order? Langsung chat kami, yuk!
           </p>
           <div className="flex justify-center space-x-4">
-            <motion.a href="https://wa.me/1234567890" className="bg-green-500 text-white py-2 px-6 rounded-full shadow-lg" whileHover={{ scale: 1.1 }}>
+            <motion.a href="https://wa.me/6285158172880" className="bg-green-500 text-white py-2 px-6 rounded-full shadow-lg" whileHover={{ scale: 1.1 }}>
               WhatsApp
             </motion.a>
-            <motion.a href="mailto:info@yumsert.com" className="bg-yumsert-orange text-white py-2 px-6 rounded-full shadow-lg" whileHover={{ scale: 1.1 }}>
+            <motion.a href="mailto:@gmail.com" className="bg-yumsert-orange text-white py-2 px-6 rounded-full shadow-lg" whileHover={{ scale: 1.1 }}>
               Email
             </motion.a>
           </div>

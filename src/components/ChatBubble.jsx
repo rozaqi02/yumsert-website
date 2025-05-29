@@ -9,7 +9,7 @@ function ChatBubble() {
       animate={{ scale: 1 }}
       whileHover={{ scale: 1.2 }}
     >
-      <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="flex items-center">
+      <a href="https://wa.me/6285158172880" target="_blank" rel="noopener noreferrer" className="flex items-center">
         <FaWhatsapp size={24} />
         <span className="ml-2">Chat Yuk!</span>
       </a>
