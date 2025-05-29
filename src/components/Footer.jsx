@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaFacebook, FaInstagram } from 'react-icons/fa';
+import { FaTiktok, FaInstagram } from 'react-icons/fa';
 
 function Footer() {
   return (
@@ -10,8 +10,8 @@ function Footer() {
           <p className="mt-2">Waktunya Kasih Self Reward</p>
           <div className="mt-4 flex justify-center space-x-4">
             {[
-              { href: 'https://facebook.com', Icon: FaFacebook },
-              { href: 'https://instagram.com', Icon: FaInstagram },
+              { href: 'https://tiktok.com/@yumsert.id', Icon: FaTiktok },
+              { href: 'https://instagram.com/yumsert.id', Icon: FaInstagram },
             ].map(({ href, Icon }, index) => (
               <motion.a key={index} href={href} className="text-white hover:text-yumsert-orange" whileHover={{ scale: 1.2 }}>
                 <Icon size={24} />

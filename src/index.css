@@ -17,14 +17,14 @@ body {
 
 /* Light mode */
 html.light {
-  --bg-color: #fffaf0; /* Soft Cream */
+  --bg-color: #fffaf0;
   --text-color: #1e3a8a;
   --section-bg: #ffffff;
 }
 
 /* Dark mode */
 html.dark {
-  --bg-color: #2d3748; /* Dark Gray */
+  --bg-color: #2d3748;
   --text-color: #ffffff;
   --section-bg: #374151;
 }
@@ -33,7 +33,14 @@ html.dark {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Efek dekoratif Gen-Z */
+/* Fallback warna jika variabel gagal */
+.text-yumsert-blue {
+  color: #1e3a8a;
+}
+.dark .text-yumsert-blue {
+  color: #93c5fd;
+}
+
 .sticker {
   position: absolute;
   opacity: 0.2;
