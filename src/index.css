@@ -1,13 +1,41 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --yumsert-blue: #1e3a8a;
+  --yumsert-orange: #f97316;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Light mode */
+html.light {
+  --bg-color: #fffaf0; /* Soft Cream */
+  --text-color: #1e3a8a;
+  --section-bg: #ffffff;
+}
+
+/* Dark mode */
+html.dark {
+  --bg-color: #2d3748; /* Dark Gray */
+  --text-color: #ffffff;
+  --section-bg: #374151;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Efek dekoratif Gen-Z */
+.sticker {
+  position: absolute;
+  opacity: 0.2;
+  pointer-events: none;
 }
