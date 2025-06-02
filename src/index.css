@@ -12,30 +12,21 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Light mode */
-html[data-theme="light"] {
-  --bg-color: #fff7e1; /* Krim */
+html.light {
+  --bg-color: #fffaf0;
   --text-color: #1e3a8a;
-  --secondary-text: #4b5563;
-  --section-bg: #f9f0d9;
-  --card-bg: #ffffff;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --button-bg: #1e3a8a;
-  --button-text: #ffffff;
+  --section-bg: #ffffff;
 }
 
 /* Dark mode */
-html[data-theme="dark"] {
-  --bg-color: #2d3748; /* Abu-abu gelap dengan hint biru tua */
-  --text-color: #1e3a8a;
-  --secondary-text: #4b5563;
-  --section-bg: #334155;
-  --card-bg: #2d3748;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  --button-bg: #2563eb;
-  --button-text: #ffffff;
+html.dark {
+  --bg-color: #2d3748;
+  --text-color: #ffffff;
+  --section-bg: #374151;
 }
 
 .font-poppins {
@@ -45,15 +36,8 @@ html[data-theme="dark"] {
 .text-yumsert-blue {
   color: #1e3a8a;
 }
-[data-theme="dark"] .text-yumsert-blue {
-  color: #60a5fa;
-}
-
-.text-secondary {
-  color: #4b5563;
-}
-[data-theme="dark"] .text-secondary {
-  color: #9ca3af;
+.dark .text-yumsert-blue {
+  color: #1e3a8a;
 }
 
 .sticker {
@@ -62,15 +46,9 @@ html[data-theme="dark"] {
   pointer-events: none;
 }
 
-@media (max-width: 640px) {
-  section {
-    padding: 0 1.5rem;
-  }
-}
-
 button, a.button {
-  background-color: var(--button-bg);
-  color: var(--button-text);
+  background-color: var(--yumsert-blue);
+  color: #ffffff;
   opacity: 1;
   transition: all 0.3s ease;
 }
@@ -79,10 +57,15 @@ button:hover, a.button:hover {
   background-color: var(--yumsert-orange);
 }
 
-/* Marquee animation */
-@keyframes marquee {
+/* Marquee untuk Testimoni dan FAQ */
+@keyframes marquee-left {
   0% { transform: translateX(100%); }
   100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .marquee-container {
@@ -90,29 +73,64 @@ button:hover, a.button:hover {
   white-space: nowrap;
 }
 
-.marquee-content {
+.marquee-content-left {
   display: inline-flex;
-  animation: marquee 20s linear infinite;
+  animation: marquee-left 120s linear infinite;
+}
+
+.marquee-content-right {
+  display: inline-flex;
+  animation: marquee-right 120s linear infinite;
 }
 
 .marquee-content > div {
   margin-right: 1.5rem;
+  background: var(--section-bg);
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, var(--yumsert-blue), var(--yumsert-orange)) 1;
+  border-radius: 20px;
+  padding: 1rem;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Animasi kustom */
+.marquee-content img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  border: 2px solid var(--yumsert-orange);
+}
+
+/* Animasi untuk Gen-Z */
 @keyframes spin-slow {
   to { transform: rotate(360deg); }
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
 }
 
 .animate-spin-slow {
   animation: spin-slow 10s linear infinite;
 }
 
-.animate-fade-in {
-  animation: fade-in 1s ease-in-out;
+/* Responsive untuk mobile */
+@media (max-width: 640px) {
+  .title-home {
+    font-size: 1.8rem !important;
+    line-height: 2.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-wrap: balance;
+  }
 }

@@ -1,138 +1,120 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaSun, FaMoon } from 'react-icons/fa';
 
 function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [showAnimation, setShowAnimation] = useState(false);
 
-  const navItems = [
-    { label: 'Home', id: 'home' },
-    { label: 'Produk', id: 'products' },
-    { label: 'Tentang', id: 'about' },
-    { label: 'Testimoni', id: 'testimonials' },
-    { label: 'FAQ', id: 'faq' },
-    { label: 'Kontak', id: 'contact' },
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  const navLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'Produk', href: '#products' },
+    { name: 'Tentang', href: '#about' },
+    { name: 'Testimoni', href: '#testimonials' },
+    { name: 'FAQ', href: '#faq' },
+    { name: 'Kontak', href: '#contact' },
   ];
 
-  const scrollToSection = (sectionId) => {
-    setTimeout(() => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        setActiveSection(sectionId);
-      }
-      setIsOpen(false);
-    }, 100);
+  const handleNavClick = (href) => {
+    setIsOpen(false);
+    setActiveSection(href.replace('#', ''));
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <motion.nav
-      className="bg-yumsert-blue text-white fixed w-full z-50 shadow-md"
+      className="fixed top-0 left-0 right-0 bg-[var(--bg-color)] bg-opacity-80 backdrop-blur-md shadow-md z-50"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ type: 'spring', stiffness: 120 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <motion.div
-            onClick={() => {
-              setShowAnimation(true);
-              scrollToSection('home');
-            }}
-            className="flex items-center cursor-pointer relative"
-            whileHover={{ scale: 1.1 }}
+            className="flex items-center space-x-2"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => handleNavClick('#home')}
           >
             <motion.img
-              src="/assets/images/logo.png"
+              src="/logo.png"
               alt="Yumsert Logo"
-              className="h-10 w-10 mr-2"
-              onError={(e) => (e.target.src = 'https://via.placeholder.com/40')}
-              animate={{ rotate: showAnimation ? 360 : 0 }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
+              className="h-10 w-auto"
+              whileTap={{ rotate: 360 }}
+              transition={{ duration: 0.5 }}
             />
-            <h1 className="text-2xl font-bold">Yumsert</h1>
-            {showAnimation && (
-              <motion.div
-                className="absolute inset-0 flex items-center justify-center"
-                initial={{ scale: 0, opacity: 1 }}
-                animate={{ scale: 2, opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                onAnimationComplete={() => setShowAnimation(false)}
-              >
-                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-yumsert-orange to-yumsert-blue" />
-                <motion.div
-                  className="absolute w-12 h-12 border-4 border-yumsert-blue rounded-full"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                />
-              </motion.div>
-            )}
+            <motion.span
+              className="text-xl font-bold text-[var(--yumsert-blue)]"
+              whileTap={{ color: '#f97316' }}
+              transition={{ duration: 0.3 }}
+            >
+              Yumsert
+            </motion.span>
           </motion.div>
-          <div className="flex items-center space-x-6">
-            <div className="hidden md:flex items-center space-x-4">
-              {navItems.map((item) => (
-                <motion.a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className={`px-3 py-2 text-sm font-medium transition-colors duration-300 ${
-                    activeSection === item.id ? 'text-yumsert-orange' : 'text-white'
-                  }`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(item.id);
-                  }}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  {item.label}
-                </motion.a>
-              ))}
-            </div>
-            <div className="flex items-center space-x-2">
-              <motion.button
-                onClick={toggleTheme}
-                className={`p-3 rounded-full transition-colors duration-300 ${
-                  theme === 'light' ? 'bg-gray-200' : 'bg-gray-600'
-                } border-2 border-yumsert-blue hover:bg-yumsert-orange hover:text-white`}
-                whileHover={{ scale: 1.1 }}
-                aria-label="Toggle theme"
+          <div className="hidden md:flex space-x-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  activeSection === link.href.replace('#', '')
+                    ? 'bg-[var(--yumsert-orange)] text-white'
+                    : 'text-[var(--text-color)] hover:bg-[var(--yumsert-blue)] hover:text-white'
+                } transition-all duration-300`}
               >
-                {theme === 'light' ? <FaMoon size={20} /> : <FaSun size={20} />}
-              </motion.button>
+                {link.name}
+              </a>
+            ))}
+          </div>
+          <div className="flex items-center space-x-2">
+            <motion.button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-[var(--section-bg)] text-[var(--text-color)]"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {theme === 'light' ? <FaMoon size={20} /> : <FaSun size={20} />}
+            </motion.button>
+            <div className="md:hidden">
               <motion.button
-                onClick={() => setIsOpen((prev) => !prev)}
-                onTouchStart={() => setIsOpen((prev) => !prev)}
-                onMouseDown={() => setIsOpen((prev) => !prev)}
-                className="md:hidden p-2 transition-colors duration-300 hover:bg-yumsert-orange hover:text-white"
+                onClick={toggleMenu}
+                className="p-2 text-[var(--text-color)]"
                 whileHover={{ scale: 1.1 }}
-                aria-label="Toggle menu"
+                whileTap={{ scale: 0.95 }}
               >
-                {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
               </motion.button>
             </div>
           </div>
         </div>
-        {isOpen && (
-          <div className="md:hidden bg-yumsert-blue flex flex-col items-center space-y-2 py-2 z-40">
-            {navItems.map((item) => (
-              <motion.a
-                key={item.id}
-                href={`#${item.id}`}
-                className={`text-white w-full text-center py-2 transition-colors duration-300 ${
-                  activeSection === item.id ? 'text-yumsert-orange' : 'text-white'
-                }`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.id);
-                }}
-                whileHover={{ scale: 1.1 }}
+      </div>
+      {isOpen && (
+        <motion.div
+          className="md:hidden bg-[var(--bg-color)] bg-opacity-80 backdrop-blur-md shadow-md"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  activeSection === link.href.replace('#', '')
+                    ? 'bg-[var(--yumsert-orange)] text-white'
+                    : 'text-[var(--text-color)] hover:bg-[var(--yumsert-blue)] hover:text-white'
+                } transition-all duration-300`}
               >
-                {item.label}
-              </motion.a>
+                {link.name}
+              </a>
             ))}
           </div>
-        )}
-      </div>
+        </motion.div>
+      )}
     </motion.nav>
   );
 }
