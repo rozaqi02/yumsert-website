@@ -13,7 +13,7 @@ function ChatBubble() {
     >
       <a href="https://wa.me/6285158172880" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
         <FaWhatsapp size={20} />
-        <span>Chat Yuk!</span>
+        <span>Order Disini!</span>
       </a>
     </motion.div>
   );

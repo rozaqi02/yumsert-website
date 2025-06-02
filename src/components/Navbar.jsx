@@ -24,12 +24,33 @@ function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 right-0 bg-[var(--bg-color)] bg-opacity-80 backdrop-blur-md shadow-md z-50"
+      className="fixed top-0 left-0 right-0 z-50"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 120 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Full-width background with blur effect */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `rgba(var(--bg-color-rgb), 0.1)`,
+          backdropFilter: 'blur(12px) saturate(1.5)',
+          WebkitBackdropFilter: 'blur(12px) saturate(1.5)', // For Safari compatibility
+          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+        }}
+      >
+        {/* Glossy highlight effect */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent)',
+            pointerEvents: 'none',
+          }}
+        />
+      </div>
+
+      {/* Constrained content */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="flex justify-between items-center h-16">
           <motion.div
             className="flex items-center space-x-2"
@@ -90,14 +111,36 @@ function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
           </div>
         </div>
       </div>
+
+      {/* Mobile menu */}
       {isOpen && (
         <motion.div
-          className="md:hidden bg-[var(--bg-color)] bg-opacity-80 backdrop-blur-md shadow-md"
+          className="md:hidden relative z-10"
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: 'auto', opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          {/* Full-width background for mobile menu */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `rgba(var(--bg-color-rgb), 0.1)`,
+              backdropFilter: 'blur(12px) saturate(1.5)',
+              WebkitBackdropFilter: 'blur(12px) saturate(1.5)',
+              boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+            }}
+          >
+            <div
+              className="absolute inset-0"
+              style={{
+                background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent)',
+                pointerEvents: 'none',
+              }}
+            />
+          </div>
+
+          {/* Constrained content for mobile menu */}
+          <div className="max-w-7xl mx-auto px-2 pt-2 pb-3 space-y-1 sm:px-3 relative z-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
