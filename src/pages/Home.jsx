@@ -14,6 +14,7 @@ function Home({ theme, toggleTheme }) {
   const [currentTitle, setCurrentTitle] = useState(0);
   const [activeSection, setActiveSection] = useState('home');
   const [isTitleWrapped, setIsTitleWrapped] = useState(false);
+  const [displayedTitle, setDisplayedTitle] = useState('');
   const titleRef = useRef(null);
 
   const titles = [
@@ -30,13 +31,15 @@ function Home({ theme, toggleTheme }) {
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => setCurrentTitle((prev) => (prev + 1) % titles.length), 4000);
+    const interval = setInterval(() => {
+      setCurrentTitle((prev) => (prev + 1) % titles.length);
+    }, 4000);
     return () => clearInterval(interval);
   }, [titles.length]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'products', 'about', 'testimonials', 'faq', 'contact'];
+      const sections = ['home', 'products', 'testimonials', 'faq', 'about', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -69,6 +72,22 @@ function Home({ theme, toggleTheme }) {
     checkTitleWrap();
     window.addEventListener('resize', checkTitleWrap);
     return () => window.removeEventListener('resize', checkTitleWrap);
+  }, [currentTitle, displayedTitle]);
+
+  useEffect(() => {
+    setDisplayedTitle('');
+    let charIndex = 0;
+    const currentText = titles[currentTitle];
+    const typingInterval = setInterval(() => {
+      if (charIndex < currentText.length) {
+        setDisplayedTitle((prev) => prev + currentText[charIndex]);
+        charIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 50);
+
+    return () => clearInterval(typingInterval);
   }, [currentTitle]);
 
   const scrollToProducts = () => {
@@ -141,12 +160,12 @@ function Home({ theme, toggleTheme }) {
             ref={titleRef}
             className={`text-4xl md:text-6xl font-bold text-[var(--yumsert-blue)] drop-shadow-lg px-4 ${
               isTitleWrapped ? 'whitespace-normal' : 'whitespace-nowrap'
-            }`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            } typing-effect`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            {titles[currentTitle]}
+            {displayedTitle}
           </motion.h1>
           <div className="text-lg md:text-2xl text-[var(--yumsert-orange)] mt-4 flex justify-center">
             {tagline.map((word, index) => (
@@ -197,6 +216,92 @@ function Home({ theme, toggleTheme }) {
               {selfLove.map((product, index) => (
                 <ProductCard key={index} {...product} />
               ))}
+            </div>
+          </div>
+        </div>
+      </motion.section>
+      <motion.section id="testimonials" className="py-16 bg-[var(--section-bg)] relative" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold text-[var(--yumsert-blue)] mb-8 animate-fade-in">Testimoni 💬</h2>
+          <div className="space-y-4">
+            <div className="marquee-container">
+              <div className="marquee-content-left">
+                {testimonials.slice(0, 4).map((testimonial, index) => (
+                  <div key={index} className="marquee-item">
+                    <img src={testimonial.image} alt={testimonial.name} />
+                    <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)]">- {testimonial.name}</p>
+                  </div>
+                ))}
+                {testimonials.slice(0, 4).map((testimonial, index) => (
+                  <div key={`duplicate-${index}`} className="marquee-item">
+                    <img src={testimonial.image} alt={testimonial.name} />
+                    <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)]">- {testimonial.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="marquee-container">
+              <div className="marquee-content-right">
+                {testimonials.slice(4, 8).map((testimonial, index) => (
+                  <div key={index} className="marquee-item">
+                    <img src={testimonial.image} alt={testimonial.name} />
+                    <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)]">- {testimonial.name}</p>
+                  </div>
+                ))}
+                {testimonials.slice(4, 8).map((testimonial, index) => (
+                  <div key={`duplicate-${index}`} className="marquee-item">
+                    <img src={testimonial.image} alt={testimonial.name} />
+                    <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)]">- {testimonial.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+      <motion.section id="faq" className="py-16 bg-[var(--bg-color)] relative" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold text-[var(--yumsert-blue)] mb-8 animate-fade-in">FAQ ❓</h2>
+          <div className="space-y-4">
+            <div className="marquee-container">
+              <div className="marquee-content-left">
+                {faqs.slice(0, 3).map((faq, index) => (
+                  <div key={index} className="marquee-item">
+                    <img src={faq.image} alt="FAQ" />
+                    <h3 className="font-semibold text-[var(--yumsert-blue)]">{faq.question}</h3>
+                    <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
+                  </div>
+                ))}
+                {faqs.slice(0, 3).map((faq, index) => (
+                  <div key={`duplicate-${index}`} className="marquee-item">
+                    <img src={faq.image} alt="FAQ" />
+                    <h3 className="font-semibold text-[var(--yumsert-blue)]">{faq.question}</h3>
+                    <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="marquee-container">
+              <div className="marquee-content-right">
+                {faqs.slice(3, 6).map((faq, index) => (
+                  <div key={index} className="marquee-item">
+                    <img src={faq.image} alt="FAQ" />
+                    <h3 className="font-semibold text-[var(--yumsert-blue)]">{faq.question}</h3>
+                    <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
+                  </div>
+                ))}
+                {faqs.slice(3, 6).map((faq, index) => (
+                  <div key={`duplicate-${index}`} className="marquee-item">
+                    <img src={faq.image} alt="FAQ" />
+                    <h3 className="font-semibold text-[var(--yumsert-blue)]">{faq.question}</h3>
+                    <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -254,92 +359,6 @@ function Home({ theme, toggleTheme }) {
                 Kenal Kami Lebih Dekat 🚀
               </motion.button>
             </motion.div>
-          </div>
-        </div>
-      </motion.section>
-      <motion.section id="testimonials" className="py-16 bg-[var(--section-bg)] relative" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-[var(--yumsert-blue)] mb-8 animate-fade-in">Testimoni 💬</h2>
-          <div className="space-y-4">
-            <div className="marquee-container">
-              <div className="marquee-content-left">
-                {testimonials.slice(0, 4).map((testimonial, index) => (
-                  <div key={index} className="min-w-[220px]">
-                    <img src={testimonial.image} alt={testimonial.name} />
-                    <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
-                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)]">- {testimonial.name}</p>
-                  </div>
-                ))}
-                {testimonials.slice(0, 4).map((testimonial, index) => (
-                  <div key={`duplicate-${index}`} className="min-w-[220px]">
-                    <img src={testimonial.image} alt={testimonial.name} />
-                    <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
-                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)]">- {testimonial.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="marquee-container">
-              <div className="marquee-content-right">
-                {testimonials.slice(4, 8).map((testimonial, index) => (
-                  <div key={index} className="min-w-[220px]">
-                    <img src={testimonial.image} alt={testimonial.name} />
-                    <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
-                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)]">- {testimonial.name}</p>
-                  </div>
-                ))}
-                {testimonials.slice(4, 8).map((testimonial, index) => (
-                  <div key={`duplicate-${index}`} className="min-w-[220px]">
-                    <img src={testimonial.image} alt={testimonial.name} />
-                    <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
-                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)]">- {testimonial.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-      <motion.section id="faq" className="py-16 bg-[var(--bg-color)] relative" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-[var(--yumsert-blue)] mb-8 animate-fade-in">FAQ ❓</h2>
-          <div className="space-y-4">
-            <div className="marquee-container">
-              <div className="marquee-content-left">
-                {faqs.slice(0, 3).map((faq, index) => (
-                  <div key={index} className="min-w-[220px]">
-                    <img src={faq.image} alt="FAQ" />
-                    <h3 className="font-semibold text-[var(--yumsert-blue)]">{faq.question}</h3>
-                    <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
-                  </div>
-                ))}
-                {faqs.slice(0, 3).map((faq, index) => (
-                  <div key={`duplicate-${index}`} className="min-w-[220px]">
-                    <img src={faq.image} alt="FAQ" />
-                    <h3 className="font-semibold text-[var(--yumsert-blue)]">{faq.question}</h3>
-                    <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="marquee-container">
-              <div className="marquee-content-right">
-                {faqs.slice(3, 6).map((faq, index) => (
-                  <div key={index} className="min-w-[220px]">
-                    <img src={faq.image} alt="FAQ" />
-                    <h3 className="font-semibold text-[var(--yumsert-blue)]">{faq.question}</h3>
-                    <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
-                  </div>
-                ))}
-                {faqs.slice(3, 6).map((faq, index) => (
-                  <div key={`duplicate-${index}`} className="min-w-[220px]">
-                    <img src={faq.image} alt="FAQ" />
-                    <h3 className="font-semibold text-[var(--yumsert-blue)]">{faq.question}</h3>
-                    <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </motion.section>

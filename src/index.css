@@ -83,22 +83,15 @@ button:hover, a.button:hover {
   animation: marquee-right 120s linear infinite;
 }
 
-.marquee-content > div {
+.marquee-item {
   margin-right: 1.5rem;
-  background: var(--section-bg);
-  border: 2px solid transparent;
-  border-image: linear-gradient(45deg, var(--yumsert-blue), var(--yumsert-orange)) 1;
-  border-radius: 20px;
-  padding: 1rem;
-  width: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.marquee-content img {
+.marquee-item img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -124,6 +117,18 @@ button:hover, a.button:hover {
   animation: spin-slow 10s linear infinite;
 }
 
+/* Animasi ketikan untuk titles utama */
+.typing-effect {
+  display: inline-block;
+  border-right: 2px solid var(--yumsert-blue);
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--yumsert-blue); }
+}
+
 /* Responsive untuk mobile */
 @media (max-width: 640px) {
   .title-home {
@@ -132,5 +137,9 @@ button:hover, a.button:hover {
     padding-left: 1rem;
     padding-right: 1rem;
     text-wrap: balance;
+  }
+
+  .marquee-item {
+    margin-right: 1rem;
   }
 }

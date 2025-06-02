@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaBars, FaTimes, FaSun, FaMoon } from 'react-icons/fa';
+import { FaBars, FaSun, FaMoon } from 'react-icons/fa';
 
 function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,9 +10,9 @@ function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
   const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'Produk', href: '#products' },
-    { name: 'Tentang', href: '#about' },
     { name: 'Testimoni', href: '#testimonials' },
     { name: 'FAQ', href: '#faq' },
+    { name: 'Tentang', href: '#about' },
     { name: 'Kontak', href: '#contact' },
   ];
 
@@ -80,11 +80,11 @@ function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
             <div className="md:hidden">
               <motion.button
                 onClick={toggleMenu}
-                className="p-2 text-[var(--text-color)]"
+                className="p-2 rounded-full bg-[var(--section-bg)] text-[var(--text-color)]"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+                <FaBars size={20} />
               </motion.button>
             </div>
           </div>
