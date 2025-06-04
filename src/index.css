@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --yumsert-blue: #61dafb;
+  --yumsert-blue: #38b6ff;
   --yumsert-orange: #f97316;
 }
 
@@ -18,7 +18,7 @@ body {
 /* Light mode */
 html.light {
   --bg-color: #fffaf0;
-  --text-color: #61dafb;
+  --text-color: #38b6ff;
   --section-bg: #ffffff;
 }
 
@@ -34,10 +34,10 @@ html.dark {
 }
 
 .text-yumsert-blue {
-  color: #61dafb;
+  color: #38b6ff;
 }
 .dark .text-yumsert-blue {
-  color: #61dafb;
+  color: #38b6ff;
 }
 
 .sticker {
