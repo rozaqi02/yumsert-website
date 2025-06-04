@@ -95,7 +95,7 @@ function Home({ theme, toggleTheme }) {
   };
 
   const selfReward = [
-    { name: 'Pudding Coklat', image: '/assets/images/coklat-regal-pudding.jpg', category: 'Self Reward', description: 'Puding coklat lembut dengan rasa manis pas. 🍫' },
+    { name: 'Pudding Oreo', image: '/assets/images/oreo-pudding.jpg', category: 'Self Reward', description: 'Puding coklat lembut dengan rasa manis pas. 🍫' },
     { name: 'Vanilla Coklat', image: '/assets/images/vanilla-coklat-roti.jpg', category: 'Self Reward', description: 'Lembut vanilla dan coklat manis yang pas. 🥐' },
     { name: 'Vanilla Keju', image: '/assets/images/vanilla-keju-roti.jpg', category: 'Self Reward', description: 'Vanila lembut dengan keju gurih. 🧀' },
     { name: 'Pudding Coklat Regal', image: '/assets/images/coklat-regal-pudding.jpg', category: 'Self Reward', description: 'Perpaduan coklat dan regal lembut. 🍪' },
