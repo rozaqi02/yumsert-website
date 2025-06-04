@@ -28,6 +28,9 @@ function Home({ theme, toggleTheme }) {
     'Yumsert, Manis Tanpa Batas! 💫',
     'Feel the Yumsert Magic! 🪄',
     'Yumsert, Happiness in Every Bite! 🥐',
+    'Yumsert, Dessert for Every Mood! 🍩',
+    'Yumsert, Treat Yourself Right! 🎉',
+    'Yumsert, Sweetness You Deserve! 💝',
   ];
 
   useEffect(() => {
@@ -95,7 +98,7 @@ function Home({ theme, toggleTheme }) {
   };
 
   const selfReward = [
-    { name: 'Pudding Oreo', image: '/assets/images/oreo-pudding.jpg', category: 'Self Reward', description: 'Puding coklat lembut dengan rasa manis pas. 🍫' },
+    { name: 'Pudding Oreo', image: '/assets/images/oreo-pudding.jpg', category: 'Self Reward', description: 'Puding lembut dengan topping oreo dengan rasa manis pas. 🍫' },
     { name: 'Vanilla Coklat', image: '/assets/images/vanilla-coklat-roti.jpg', category: 'Self Reward', description: 'Lembut vanilla dan coklat manis yang pas. 🥐' },
     { name: 'Vanilla Keju', image: '/assets/images/vanilla-keju-roti.jpg', category: 'Self Reward', description: 'Vanila lembut dengan keju gurih. 🧀' },
     { name: 'Pudding Coklat Regal', image: '/assets/images/coklat-regal-pudding.jpg', category: 'Self Reward', description: 'Perpaduan coklat dan regal lembut. 🍪' },
@@ -151,9 +154,9 @@ function Home({ theme, toggleTheme }) {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, type: 'spring', stiffness: 50 }}
       >
-        <div className="sticker top-10 left-10 w-20 h-20 bg-[var(--yumsert-orange)] rounded-full animate-spin-slow" />
-        <div className="sticker bottom-20 right-20 w-16 h-16 bg-[var(--yumsert-blue)] rounded-full animate-spin-slow" />
-        <div className="sticker top-20 right-40 w-12 h-12 bg-[var(--yumsert-orange)] rounded-full animate-bounce" />
+        <div className="sticker top-10 left-10 w-20 h-20 bg-gradient-to-br from-[var(--yumsert-blue)] to-[var(--yumsert-orange)] rounded-full animate-spin-slow opacity-50" />
+        <div className="sticker bottom-20 right-20 w-16 h-16 bg-gradient-to-br from-[var(--yumsert-orange)] to-[var(--yumsert-blue)] rounded-full animate-spin-slow opacity-50" />
+        <div className="sticker top-20 right-40 w-12 h-12 bg-[var(--yumsert-blue)] rounded-full animate-bounce opacity-50" />
         <div className="text-center">
           <motion.h1
             key={currentTitle}

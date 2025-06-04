@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Anton&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -24,13 +24,17 @@ html.light {
 
 /* Dark mode */
 html.dark {
-  --bg-color: #09101a ;
+  --bg-color: #09101a;
   --text-color: #ffffff;
   --section-bg: #09101a;
 }
 
 .font-poppins {
   font-family: 'Poppins', sans-serif;
+}
+
+.font-anton {
+  font-family: 'Anton', sans-serif;
 }
 
 .text-yumsert-blue {
@@ -42,8 +46,9 @@ html.dark {
 
 .sticker {
   position: absolute;
-  opacity: 0.2;
+  opacity: 0.5;
   pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 button, a.button {
@@ -57,9 +62,9 @@ button:hover, a.button:hover {
   background-color: var(--yumsert-orange);
 }
 
-/* Marquee untuk Testimoni dan FAQ */
+/* Marquee untuk Testimoni, FAQ, dan Label Produk */
 @keyframes marquee-left {
-  0% { transform: translateX(100%); }
+  0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
 
