@@ -24,9 +24,9 @@ html.light {
 
 /* Dark mode */
 html.dark {
-  --bg-color: #2d3748;
+  --bg-color: #09101a ;
   --text-color: #ffffff;
-  --section-bg: #374151;
+  --section-bg: #09101a;
 }
 
 .font-poppins {
