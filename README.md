@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# 🎉 Yumsert - Sweet Delight Project 🎂
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📖 Overview
+Welcome to **Yumsert**, a delightful dessert project built with love by the Ganashakti Malang team! This web application showcases a variety of sweet treats like puddings and pastries, designed to bring happiness with every bite. 🍫✨ Built using modern web technologies, Yumsert offers an engaging user experience with smooth animations and a responsive design.
 
-## Available Scripts
+## 🚀 Features
+- **Delicious Product Showcase**: Explore a range of desserts under "Self Reward" and "Self Love" categories. 🥐
+- **Dynamic Animations**: Enjoy smooth transitions and marquee effects powered by Framer Motion. 🎬
+- **Theme Switching**: Switch between light and dark modes for a personalized experience. 🌞🌙
+- **Interactive UI**: Engaging UX with hover effects and scroll-based animations. 🎮
+- **Responsive Design**: Works seamlessly across all devices, from mobile to desktop. 📱💻
 
-In the project directory, you can run:
+## 🛠️ Tech Stack
+- **Frontend**: React, Framer Motion, Tailwind CSS
+- **Styling**: Custom CSS with Poppins font
+- **Tools**: Vite (for development), npm
 
-### `npm start`
+## 📂 Project Structure
+yumsert-project/
+├── src/
+│   ├── components/         # Reusable components like Navbar, Footer, ProductCard
+│   ├── assets/            # Images and static files
+│   ├── App.jsx            # Main app component
+│   ├── Home.jsx           # Home page component
+│   ├── index.css          # Global styles
+│   └── main.jsx           # Entry point
+├── public/                # Public assets
+├── package.json           # Project dependencies and scripts
+└── README.md              # This file
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🌟 Installation
+1. Clone the repository:
+   git clone https://github.com/username/yumsert-project.git
+Navigate to the project directory:
+cd yumsert-project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Install dependencies:
+npm install
 
-### `npm test`
+Start the development server:
+npm run dev
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Build for production:
+npm run build
 
-### `npm run build`
+Run the production build:
+npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+🎨 Usage
+Visit the homepage to see the rotating taglines and product cards.
+Scroll to explore testimonials, FAQs, and the "About Us" section.
+Toggle between light and dark themes using the icon in the navbar.
+Contact us via the provided email or WhatsApp links.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+🤝 Contributing
+We welcome contributions! Here's how you can help:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Fork the repository.
+Create a new branch: git checkout -b feature-name.
+Make your changes and commit: git commit -m "Add feature".
+Push to the branch: git push origin feature-name.
+Open a Pull Request.
 
-### `npm run eject`
+⚠️ Issues
+Found a bug or have a suggestion? Please open an issue on GitHub Issues.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+📄 License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🙌 Acknowledgments
+Ganashakti Malang Team: For the creativity and passion behind Yumsert.
+Open Source Community: For tools like React and Framer Motion.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thanks!
