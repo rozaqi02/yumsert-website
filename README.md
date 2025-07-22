@@ -1,10 +1,10 @@
-# 🎉 Yumsert - Proyek Kenikmatan Manis 🎂
+# 🎉 Yumsert - Profil Bisnis 🎂
 
 ## 📖 Gambaran Umum
-Selamat datang di **Yumsert**, sebuah proyek dessert yang dibuat dengan cinta oleh tim Ganashakti Malang! Aplikasi web ini menampilkan berbagai macam camilan manis seperti puding dan kue-kue, dirancang untuk membawa kebahagiaan di setiap gigitan. 🍫✨ Dibangun dengan teknologi web modern, Yumsert menawarkan pengalaman pengguna yang menarik dengan animasi halus dan desain responsif.
+Selamat datang di **Yumsert**, sebuah proyek dessert yang dibuat oleh tim Ganashakti Malang. Aplikasi web ini menampilkan berbagai macam camilan manis seperti puding dan kue-kue, dirancang untuk membawa kebahagiaan di setiap gigitan. 🍫✨ Dibangun dengan teknologi web React JS, Yumsert menawarkan pengalaman pengguna yang menarik dengan animasi halus dan desain responsif.
 
 ## 🚀 Fitur
-- **Pameran Produk Lezat**: Jelajahi berbagai dessert di kategori "Self Reward" dan "Self Love". 🥐
+- **Katalog Produk**: Jelajahi berbagai dessert di kategori "Self Reward" dan "Self Love". 🥐
 - **Animasi Dinamis**: Nikmati transisi halus dan efek marquee yang didukung oleh Framer Motion. 🎬
 - **Pemindahan Tema**: Alihkan antara mode terang dan gelap untuk pengalaman yang dipersonalisasi. 🌞🌙
 - **UI Interaktif**: Pengalaman pengguna menarik dengan efek hover dan animasi berbasis scroll. 🎮
@@ -58,7 +58,7 @@ Selamat datang di **Yumsert**, sebuah proyek dessert yang dibuat dengan cinta ol
 - Hubungi kami melalui tautan email atau WhatsApp yang disediakan.
 
 ## 🤝 Kontribusi
-    Kami menyambut kontribusi! Berikut cara Anda bisa membantu:
+Kami menyambut kontribusi! Berikut cara Anda bisa membantu:
 
 1. Fork repository.
 2. Buat cabang baru: git checkout -b nama-fitur.
