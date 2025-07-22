@@ -48,8 +48,8 @@ function ProductCard({ name, image, category, description, theme }) {
     <>
       <motion.div
         className="relative rounded-lg overflow-hidden shadow-lg group bg-[var(--section-bg)]"
-        whileHover={{ scale: 1.05, y: -10 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.03, y: -5 }} // Mengurangi scale menjadi 1.03 untuk hover yang lebih halus
+        whileTap={{ scale: 0.98 }} // Mengurangi scale menjadi 0.98 untuk tap yang sangat minim
         style={{ aspectRatio: '3/4' }}
       >
         <div className="relative">
@@ -60,7 +60,7 @@ function ProductCard({ name, image, category, description, theme }) {
             style={{ aspectRatio: '3/4' }}
             onError={(e) => (e.target.src = 'https://via.placeholder.com/300x400')}
             initial={{ scale: 1 }}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.03 }} // Mengurangi scale menjadi 1.03 untuk hover yang lebih halus
             transition={{ duration: 0.3 }}
             onClick={handleClick}
           />

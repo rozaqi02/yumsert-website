@@ -123,14 +123,14 @@ function Home({ theme, toggleTheme }) {
   const tagline = "Waktunya Kasih Self Reward 💖".split(' ');
 
   const testimonials = [
-    { name: 'Chikal', text: 'Yumsert bikin hariku lebih manis! 🥳', image: 'https://i.pravatar.cc/40?img=1' },
-    { name: 'Abimanyu', text: 'Rasa premium dengan harga terjangkau! 💸', image: 'https://i.pravatar.cc/40?img=2' },
-    { name: 'Tesya', text: 'Pelayanan cepat dan dessertnya enak! 🚀', image: 'https://i.pravatar.cc/40?img=3' },
-    { name: 'King Ansa', text: 'Kualitas top, pasti balik lagi! ✨', image: 'https://i.pravatar.cc/40?img=4' },
-    { name: 'Risa', text: 'Dessert favoritku sekarang! 😍', image: 'https://i.pravatar.cc/40?img=5' },
-    { name: 'Lina', text: 'Rasa manisnya pas, cocok buat self reward! 💖', image: 'https://i.pravatar.cc/40?img=6' },
-    { name: 'Dito', text: 'Pilihan varian banyak, semua enak! 🍰', image: 'https://i.pravatar.cc/40?img=7' },
-    { name: 'Sari', text: 'Yumsert selalu jadi pilihan dessertku! 🌟', image: 'https://i.pravatar.cc/40?img=8' },
+    { name: 'Chikal', text: 'Yumsert bikin hariku lebih manis!', image: 'https://i.pravatar.cc/40?img=1' },
+    { name: 'Abimanyu', text: 'Rasa premium dengan harga terjangkau!', image: 'https://i.pravatar.cc/40?img=2' },
+    { name: 'Tesya', text: 'Pelayanan cepat dan dessertnya enak!', image: 'https://i.pravatar.cc/40?img=3' },
+    { name: 'King Ansa', text: 'Kualitas top, pasti balik lagi!', image: 'https://i.pravatar.cc/40?img=4' },
+    { name: 'Risa', text: 'Dessert favoritku sekarang!', image: 'https://i.pravatar.cc/40?img=5' },
+    { name: 'Lina', text: 'Rasa manisnya pas, cocok buat self reward!', image: 'https://i.pravatar.cc/40?img=6' },
+    { name: 'Dito', text: 'Pilihan varian banyak, semua enak!', image: 'https://i.pravatar.cc/40?img=7' },
+    { name: 'Sari', text: 'Yumsert selalu jadi pilihan dessertku!', image: 'https://i.pravatar.cc/40?img=8' },
   ];
 
   const faqs = [
@@ -141,6 +141,11 @@ function Home({ theme, toggleTheme }) {
     { question: 'Apakah ada diskon? 💸', answer: 'Ada untuk pembelian di atas 5 item.', image: 'https://i.pravatar.cc/40?img=13' },
     { question: 'Bagaimana cara pesan? 📱', answer: 'Chat via WhatsApp atau email.', image: 'https://i.pravatar.cc/40?img=14' },
   ];
+
+  const visionMission = {
+    vision: 'Menjadi pemimpin dalam menciptakan kebahagiaan melalui dessert inovatif yang berkualitas tinggi.',
+    mission: 'Memberikan pengalaman manis yang tak terlupakan dengan bahan alami, pelayanan prima, dan harga terjangkau.',
+  };
 
   return (
     <div className="min-h-screen font-poppins text-[var(--text-color)] bg-[var(--bg-color)] relative overflow-hidden">
@@ -237,7 +242,7 @@ function Home({ theme, toggleTheme }) {
             <p className="text-center text-[var(--text-color)] mb-6">
               Nikmatin momen spesial dengan Self Reward, dessert premium yang bikin hati bergetar! 💖
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
               {selfReward.map((product, index) => (
                 <ProductCard key={index} {...product} theme={theme} />
               ))}
@@ -249,7 +254,7 @@ function Home({ theme, toggleTheme }) {
             <p className="text-center text-[var(--text-color)] mb-6">
               Self Love, dessert manis yang ramah di kantong untuk kasih sayang ke diri sendiri! 🌟
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
               {selfLove.map((product, index) => (
                 <ProductCard key={index} {...product} theme={theme} />
               ))}
@@ -275,40 +280,103 @@ function Home({ theme, toggleTheme }) {
           </h2>
           <div className="space-y-4">
             <div className="marquee-container">
-              <div className="marquee-content-left">
-                {testimonials.slice(0, 4).map((testimonial, index) => (
-                  <div key={index} className="marquee-item">
-                    <img src={testimonial.image} alt={testimonial.name} />
-                    <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
-                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">- {testimonial.name}</p>
-                  </div>
+              <motion.div
+                className="marquee-content-left flex space-x-4"
+                animate={{ x: ['0%', '-100%'], transition: { x: { repeat: Infinity, duration: 20, ease: 'linear' } } }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={index}
+                    className="marquee-item flex-shrink-0 w-[33%] min-w-[300px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <img src={testimonial.image} alt={testimonial.name} className="w-10 h-10 rounded-full mx-auto" />
+                    <p className="text-[var(--text-color)] italic text-center">"{testimonial.text}"</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 text-center">- {testimonial.name}</p>
+                  </motion.div>
                 ))}
-                {testimonials.slice(0, 4).map((testimonial, index) => (
-                  <div key={`duplicate-${index}`} className="marquee-item">
-                    <img src={testimonial.image} alt={testimonial.name} />
-                    <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
-                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">- {testimonial.name}</p>
-                  </div>
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={`duplicate-${index}`}
+                    className="marquee-item flex-shrink-0 w-[33%] min-w-[300px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <img src={testimonial.image} alt={testimonial.name} className="w-10 h-10 rounded-full mx-auto" />
+                    <p className="text-[var(--text-color)] italic text-center">"{testimonial.text}"</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 text-center">- {testimonial.name}</p>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
             <div className="marquee-container">
-              <div className="marquee-content-right">
-                {testimonials.slice(4, 8).map((testimonial, index) => (
-                  <div key={index} className="marquee-item">
-                    <img src={testimonial.image} alt={testimonial.name} />
-                    <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
-                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">- {testimonial.name}</p>
-                  </div>
+              <motion.div
+                className="marquee-content-right flex space-x-4"
+                animate={{ x: ['0%', '100%'], transition: { x: { repeat: Infinity, duration: 20, ease: 'linear' } } }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={index + testimonials.length}
+                    className="marquee-item flex-shrink-0 w-[33%] min-w-[300px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <img src={testimonial.image} alt={testimonial.name} className="w-10 h-10 rounded-full mx-auto" />
+                    <p className="text-[var(--text-color)] italic text-center">"{testimonial.text}"</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 text-center">- {testimonial.name}</p>
+                  </motion.div>
                 ))}
-                {testimonials.slice(4, 8).map((testimonial, index) => (
-                  <div key={`duplicate-${index}`} className="marquee-item">
-                    <img src={testimonial.image} alt={testimonial.name} />
-                    <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
-                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">- {testimonial.name}</p>
-                  </div>
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={`duplicate-${index + testimonials.length}`}
+                    className="marquee-item flex-shrink-0 w-[33%] min-w-[300px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <img src={testimonial.image} alt={testimonial.name} className="w-10 h-10 rounded-full mx-auto" />
+                    <p className="text-[var(--text-color)] italic text-center">"{testimonial.text}"</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 text-center">- {testimonial.name}</p>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
+            </div>
+            <div className="marquee-container">
+              <motion.div
+                className="marquee-content-left flex space-x-4"
+                animate={{ x: ['0%', '-100%'], transition: { x: { repeat: Infinity, duration: 20, ease: 'linear' } } }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={index + 2 * testimonials.length}
+                    className="marquee-item flex-shrink-0 w-[33%] min-w-[300px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <img src={testimonial.image} alt={testimonial.name} className="w-10 h-10 rounded-full mx-auto" />
+                    <p className="text-[var(--text-color)] italic text-center">"{testimonial.text}"</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 text-center">- {testimonial.name}</p>
+                  </motion.div>
+                ))}
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={`duplicate-${index + 2 * testimonials.length}`}
+                    className="marquee-item flex-shrink-0 w-[33%] min-w-[300px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <img src={testimonial.image} alt={testimonial.name} className="w-10 h-10 rounded-full mx-auto" />
+                    <p className="text-[var(--text-color)] italic text-center">"{testimonial.text}"</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 text-center">- {testimonial.name}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
           </div>
         </div>
@@ -331,40 +399,103 @@ function Home({ theme, toggleTheme }) {
           </h2>
           <div className="space-y-4">
             <div className="marquee-container">
-              <div className="marquee-content-left">
-                {faqs.slice(0, 3).map((faq, index) => (
-                  <div key={index} className="marquee-item">
-                    <img src={faq.image} alt="FAQ" />
-                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">{faq.question}</h3>
-                    <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
-                  </div>
+              <motion.div
+                className="marquee-content-left flex space-x-4"
+                animate={{ x: ['0%', '-100%'], transition: { x: { repeat: Infinity, duration: 20, ease: 'linear' } } }}
+              >
+                {faqs.map((faq, index) => (
+                  <motion.div
+                    key={index}
+                    className="marquee-item flex-shrink-0 w-[33%] min-w-[300px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <img src={faq.image} alt="FAQ" className="w-10 h-10 rounded-full mx-auto" />
+                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 text-center">{faq.question}</h3>
+                    <p className="text-[var(--text-color)] mt-2 text-center">{faq.answer}</p>
+                  </motion.div>
                 ))}
-                {faqs.slice(0, 3).map((faq, index) => (
-                  <div key={`duplicate-${index}`} className="marquee-item">
-                    <img src={faq.image} alt="FAQ" />
-                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">{faq.question}</h3>
-                    <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
-                  </div>
+                {faqs.map((faq, index) => (
+                  <motion.div
+                    key={`duplicate-${index}`}
+                    className="marquee-item flex-shrink-0 w-[33%] min-w-[300px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <img src={faq.image} alt="FAQ" className="w-10 h-10 rounded-full mx-auto" />
+                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 text-center">{faq.question}</h3>
+                    <p className="text-[var(--text-color)] mt-2 text-center">{faq.answer}</p>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
             <div className="marquee-container">
-              <div className="marquee-content-right">
-                {faqs.slice(3, 6).map((faq, index) => (
-                  <div key={index} className="marquee-item">
-                    <img src={faq.image} alt="FAQ" />
-                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">{faq.question}</h3>
-                    <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
-                  </div>
+              <motion.div
+                className="marquee-content-right flex space-x-4"
+                animate={{ x: ['0%', '100%'], transition: { x: { repeat: Infinity, duration: 20, ease: 'linear' } } }}
+              >
+                {faqs.map((faq, index) => (
+                  <motion.div
+                    key={index + faqs.length}
+                    className="marquee-item flex-shrink-0 w-[33%] min-w-[300px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <img src={faq.image} alt="FAQ" className="w-10 h-10 rounded-full mx-auto" />
+                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 text-center">{faq.question}</h3>
+                    <p className="text-[var(--text-color)] mt-2 text-center">{faq.answer}</p>
+                  </motion.div>
                 ))}
-                {faqs.slice(3, 6).map((faq, index) => (
-                  <div key={`duplicate-${index}`} className="marquee-item">
-                    <img src={faq.image} alt="FAQ" />
-                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">{faq.question}</h3>
-                    <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
-                  </div>
+                {faqs.map((faq, index) => (
+                  <motion.div
+                    key={`duplicate-${index + faqs.length}`}
+                    className="marquee-item flex-shrink-0 w-[33%] min-w-[300px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <img src={faq.image} alt="FAQ" className="w-10 h-10 rounded-full mx-auto" />
+                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 text-center">{faq.question}</h3>
+                    <p className="text-[var(--text-color)] mt-2 text-center">{faq.answer}</p>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
+            </div>
+            <div className="marquee-container">
+              <motion.div
+                className="marquee-content-left flex space-x-4"
+                animate={{ x: ['0%', '-100%'], transition: { x: { repeat: Infinity, duration: 20, ease: 'linear' } } }}
+              >
+                {faqs.map((faq, index) => (
+                  <motion.div
+                    key={index + 2 * faqs.length}
+                    className="marquee-item flex-shrink-0 w-[33%] min-w-[300px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <img src={faq.image} alt="FAQ" className="w-10 h-10 rounded-full mx-auto" />
+                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 text-center">{faq.question}</h3>
+                    <p className="text-[var(--text-color)] mt-2 text-center">{faq.answer}</p>
+                  </motion.div>
+                ))}
+                {faqs.map((faq, index) => (
+                  <motion.div
+                    key={`duplicate-${index + 2 * faqs.length}`}
+                    className="marquee-item flex-shrink-0 w-[33%] min-w-[300px]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <img src={faq.image} alt="FAQ" className="w-10 h-10 rounded-full mx-auto" />
+                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 text-center">{faq.question}</h3>
+                    <p className="text-[var(--text-color)] mt-2 text-center">{faq.answer}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
           </div>
         </div>
@@ -377,63 +508,81 @@ function Home({ theme, toggleTheme }) {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="sticker top-10 right-20 w-16 h-16 bg-[var(--yumsert-orange)] rounded-full animate-spin-slow" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2
-            className={`text-4xl font-bold text-center mb-8 animate-fade-in ${
+            className={`text-4xl font-bold text-center mb-12 animate-fade-in ${
               theme === 'dark' ? 'text-[#00a3e0]' : 'text-[var(--yumsert-blue)]'
             }`}
           >
             Tentang Kami 👥
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <motion.div
-              className="relative group"
+              className="lg:col-span-1 relative overflow-hidden rounded-xl shadow-lg bg-white dark:bg-gray-800"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
             >
               <img
                 src="/assets/images/kelompok.jpg"
                 alt="Tim Ganashakti Malang"
-                className="w-full h-auto object-cover rounded-lg shadow-lg border-2 border-[var(--yumsert-blue)] dark:border-gray-700"
+                className="w-full h-64 object-cover rounded-t-xl"
                 onError={(e) => (e.target.src = 'https://via.placeholder.com/400x300')}
                 loading="lazy"
               />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[var(--yumsert-blue)]/50 dark:bg-gray-800/50 rounded-lg">
-                <p className="text-white text-lg font-semibold">Tim Ganashakti Malang 🎉</p>
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">Tim Ganashakti Malang</h3>
+                <p className="mt-2 text-gray-600 dark:text-gray-400">Kami adalah tim kreatif di balik Yumsert!</p>
               </div>
             </motion.div>
             <motion.div
-              className="text-center md:text-left"
+              className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-lg text-[var(--text-color)] mb-6">
-                Kami adalah Tim Ganashakti Malang, menciptakan Yumsert dengan cinta untuk berbagi kebahagiaan melalui dessert manis! 💖
-              </p>
-              <div className="flex flex-wrap justify-center md:justify-start gap-2">
-                {teamMembers.map((member, index) => (
-                  <motion.div
-                    key={index}
-                    className="bg-[var(--section-bg)] px-3 py-1 rounded-full shadow-md flex items-center space-x-2 animate-fade-in"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <span className="text-sm font-semibold text-[#1e3a8a] dark:text-gray-200">{member.name}</span>
-                    <span className="text-xs text-[var(--text-color)]">— {member.role}</span>
-                  </motion.div>
-                ))}
-              </div>
-              <motion.button
-                className="inline-block mt-6 rounded-full py-2 px-6 shadow-lg bg-[var(--yumsert-orange)] text-white hover:bg-[var(--yumsert-blue)] transition-all"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+              <motion.div
+                className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                whileHover={{ y: -5, transition: { duration: 0.3 } }}
               >
-                Kenal Kami Lebih Dekat 🚀
-              </motion.button>
+                <h3 className="text-xl font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 mb-4">Visi</h3>
+                <p className="text-gray-600 dark:text-gray-400">{visionMission.vision}</p>
+              </motion.div>
+              <motion.div
+                className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              >
+                <h3 className="text-xl font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 mb-4">Misi</h3>
+                <p className="text-gray-600 dark:text-gray-400">{visionMission.mission}</p>
+              </motion.div>
+              <motion.div
+                className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg col-span-1 md:col-span-2 hover:shadow-2xl transition-shadow duration-300"
+                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              >
+                <h3 className="text-xl font-semibold text-[var(--yumsert-blue)] dark:text-gray-200 mb-4">Tim Kami</h3>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {teamMembers.map((member, index) => (
+                    <motion.div
+                      key={index}
+                      className="bg-[var(--section-bg)] px-3 py-1 rounded-full shadow-md flex items-center space-x-2"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <span className="text-sm font-semibold text-[#1e3a8a] dark:text-gray-200">{member.name}</span>
+                      <span className="text-xs text-[var(--text-color)]">— {member.role}</span>
+                    </motion.div>
+                  ))}
+                </div>
+                <motion.button
+                  className="mt-6 inline-block rounded-full py-2 px-6 shadow-lg bg-[var(--yumsert-orange)] text-white hover:bg-[var(--yumsert-blue)] transition-all"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Kenal Kami Lebih Dekat 🚀
+                </motion.button>
+              </motion.div>
             </motion.div>
           </div>
         </div>

@@ -159,14 +159,14 @@ function ChatBot({ theme }) {
             color: theme === 'dark' ? '#E5E7EB' : '#1F2937',
             boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05)',
             borderRadius: '16px',
-            padding: '20px',
+            padding: '12px',
             margin: '8px',
-            fontSize: '14px',
+            fontSize: '13px',
             position: 'fixed',
             bottom: '90px',
             cursor: 'pointer',
             zIndex: 2147483647,
-            maxWidth: '400px',
+            maxWidth: '300px',
             right: '20px',
             fontFamily: '"SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
           }}
@@ -178,16 +178,16 @@ function ChatBot({ theme }) {
             animate={{ opacity: 1 }}
             style={{
               backgroundColor: theme === 'dark' ? '#374151' : '#E5E7EB',
-              width: '20px',
-              height: '20px',
+              width: '18px',
+              height: '18px',
               color: theme === 'dark' ? '#D1D5DB' : '#6B7280',
               borderRadius: '50%',
-              padding: '6px',
-              margin: '8px',
-              fontSize: '12px',
+              padding: '4px',
+              margin: '6px',
+              fontSize: '10px',
               position: 'absolute',
-              top: '-15px',
-              right: '-15px',
+              top: '-12px',
+              right: '-12px',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
@@ -207,15 +207,15 @@ function ChatBot({ theme }) {
       <AnimatePresence>
         {isOpen ? (
           <motion.div
-            className={`rounded-xl shadow-2xl w-[90%] max-w-md ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}
+            className={`rounded-xl shadow-2xl w-[90%] max-w-[320px] ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 100 }}
           >
-            <div className={`flex justify-between items-center p-4 rounded-t-xl ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-900'}`}>
-              <span className="flex items-center gap-2">
-                <img src="/logo.png" alt="Yumsert Chat" className="w-8 h-8 rounded-full" />
+            <div className={`flex justify-between items-center p-3 rounded-t-xl ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-900'}`}>
+              <span className="flex items-center gap-1">
+                <img src="/logo.png" alt="Yumsert Chat" className="w-6 h-6 rounded-full" />
                 Yumsert Chat
               </span>
               <motion.button
@@ -227,7 +227,7 @@ function ChatBot({ theme }) {
                 <FaTimes />
               </motion.button>
             </div>
-            <div ref={chatContainerRef} className={`p-4 h-80 overflow-y-auto space-y-3 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+            <div ref={chatContainerRef} className={`p-3 h-64 overflow-y-auto space-y-2 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
               <AnimatePresence>
                 {messages.map((msg, i) => (
                   <motion.div
@@ -237,9 +237,7 @@ function ChatBot({ theme }) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
                     transition={{ type: 'spring', stiffness: 120 }}
-                    className={`text-sm p-3 rounded-lg max-w-[80%] ${
-                      msg.sender === 'user' ? 'bg-yumsert-blue text-white self-end ml-auto' : 'bg-white text-gray-800 self-start mr-auto'
-                    } shadow-md`}
+                    className={`text-sm p-2 rounded-lg max-w-[75%] ${msg.sender === 'user' ? 'bg-yumsert-blue text-white self-end ml-2' : 'bg-white text-gray-800 self-start mr-2'}`}
                     style={{ boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)' }}
                   >
                     {msg.text}
@@ -249,7 +247,7 @@ function ChatBot({ theme }) {
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className={`text-sm p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600'} self-start mr-auto shadow-md flex items-center gap-2`}
+                    className={`text-sm p-2 rounded-lg ${theme === 'dark' ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600'} self-start mr-2 flex items-center gap-1`}
                     style={{ boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)' }}
                   >
                     <FaSpinner className="animate-spin" /> Mengetik...
@@ -258,16 +256,16 @@ function ChatBot({ theme }) {
               </AnimatePresence>
             </div>
             {showNameForm ? (
-              <form onSubmit={handleSetUsername} className={`p-4 border-t ${theme === 'dark' ? 'border-gray-700 bg-gray-900' : 'border-gray-200 bg-gray-50'} flex flex-col gap-3`}>
+              <form onSubmit={handleSetUsername} className={`p-3 border-t ${theme === 'dark' ? 'border-gray-700 bg-gray-900' : 'border-gray-200 bg-gray-50'} flex flex-col gap-2`}>
                 <input
                   type="text"
                   name="name"
                   placeholder="Masukkan nama panggilanmu"
-                  className={`p-3 border ${theme === 'dark' ? 'border-gray-600 bg-gray-800 text-white placeholder-gray-400' : 'border-gray-300 bg-white text-gray-900 placeholder-gray-500'} rounded-lg focus:outline-none focus:ring-2 focus:ring-yumsert-blue`}
+                  className={`p-2 border ${theme === 'dark' ? 'border-gray-600 bg-gray-800 text-white placeholder-gray-400' : 'border-gray-300 bg-white text-gray-900 placeholder-gray-500'} rounded-lg focus:outline-none focus:ring-2 focus:ring-yumsert-blue text-sm`}
                 />
                 <motion.button
                   type="submit"
-                  className={`bg-yumsert-blue text-white p-3 rounded-lg hover:bg-yumsert-orange transition-all ${theme === 'dark' ? 'hover:bg-opacity-90' : 'hover:bg-opacity-90'}`}
+                  className={`bg-yumsert-blue text-white p-2 rounded-lg hover:bg-yumsert-orange transition-all ${theme === 'dark' ? 'hover:bg-opacity-90' : 'hover:bg-opacity-90'}`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -275,13 +273,13 @@ function ChatBot({ theme }) {
                 </motion.button>
               </form>
             ) : (
-              <div className={`p-4 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
-                <div className="flex gap-2 mb-3 flex-wrap">
+              <div className={`p-3 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+                <div className="flex gap-1 mb-2 flex-wrap justify-center">
                   {quickOptions.map((option, index) => (
                     <motion.button
                       key={index}
                       onClick={() => handleQuickOption(option)}
-                      className={`bg-yumsert-blue text-white px-3 py-1.5 rounded-full text-sm hover:bg-yumsert-orange transition-all ${theme === 'dark' ? 'hover:bg-opacity-90' : 'hover:bg-opacity-90'}`}
+                      className={`bg-yumsert-blue text-white px-2 py-1 rounded-full text-xs hover:bg-yumsert-orange transition-all ${theme === 'dark' ? 'hover:bg-opacity-90' : 'hover:bg-opacity-90'}`}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, y: 10 }}
@@ -298,11 +296,11 @@ function ChatBot({ theme }) {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ketik pesan..."
-                    className={`flex-1 p-3 border-none focus:outline-none focus:ring-2 focus:ring-yumsert-blue rounded-l-lg ${theme === 'dark' ? 'bg-gray-800 text-white placeholder-gray-400' : 'bg-white text-gray-900 placeholder-gray-500'}`}
+                    className={`flex-1 p-2 border-none focus:outline-none focus:ring-2 focus:ring-yumsert-blue rounded-l-lg ${theme === 'dark' ? 'bg-gray-800 text-white placeholder-gray-400' : 'bg-white text-gray-900 placeholder-gray-500'} text-sm`}
                   />
                   <motion.button
                     type="submit"
-                    className={`bg-yumsert-blue text-white p-3 rounded-r-lg hover:bg-yumsert-orange transition-all duration-300 ${theme === 'dark' ? 'hover:bg-opacity-90' : 'hover:bg-opacity-90'}`}
+                    className={`bg-yumsert-blue text-white p-2 rounded-r-lg hover:bg-yumsert-orange transition-all duration-300 ${theme === 'dark' ? 'hover:bg-opacity-90' : 'hover:bg-opacity-90'}`}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -315,14 +313,14 @@ function ChatBot({ theme }) {
         ) : (
           <motion.div className="relative">
             <motion.button
-              className={`bg-yumsert-blue text-white p-4 rounded-full shadow-lg hover:bg-yumsert-orange ${theme === 'dark' ? 'hover:bg-opacity-90' : 'hover:bg-opacity-90'}`}
+              className={`bg-yumsert-blue text-white p-3 rounded-full shadow-lg hover:bg-yumsert-orange ${theme === 'dark' ? 'hover:bg-opacity-90' : 'hover:bg-opacity-90'}`}
               onClick={() => setIsOpen(true)}
               whileHover={{ scale: 1.1, rotate: 15 }}
               whileTap={{ scale: 0.9 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: 'spring', stiffness: 100 }}
-              style={{ backgroundImage: `url('/logo.png')`, backgroundSize: 'cover', backgroundPosition: 'center', width: '60px', height: '60px' }}
+              style={{ backgroundImage: `url('/logo.png')`, backgroundSize: 'cover', backgroundPosition: 'center', width: '50px', height: '50px' }}
             />
           </motion.div>
         )}

@@ -37,7 +37,7 @@ html.dark {
 }
 
 .text-yumsert-blue {
-  color: #61dafb;
+  color: #1e3a8a;
 }
 .dark .text-yumsert-blue {
   color: #61dafb;
@@ -97,29 +97,29 @@ button:hover, a.button:hover {
 }
 
 /* Marquee Animation */
-@keyframes marquee-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-
-@keyframes marquee-right {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
 .marquee-container {
   overflow: hidden;
   white-space: nowrap;
+  height: 200px; /* Tinggi tetap untuk 3 baris */
+}
+
+.marquee-content-left,
+.marquee-content-right {
+  display: flex;
+  animation: marquee 20s linear infinite; /* Sinkron dengan framer-motion */
 }
 
 .marquee-content-left {
-  display: inline-flex;
-  animation: marquee-left 120s linear infinite;
+  animation-direction: forward;
 }
 
 .marquee-content-right {
-  display: inline-flex;
-  animation: marquee-right 120s linear infinite;
+  animation-direction: reverse;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
 
 .marquee-item {
@@ -128,6 +128,8 @@ button:hover, a.button:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 300px;
+  flex-shrink: 0;
 }
 
 .marquee-item img {
@@ -167,6 +169,24 @@ button:hover, a.button:hover {
   50% { border-color: var(--yumsert-blue); }
 }
 
+/* Card Styling for About Section */
+.about-card {
+  background: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.about-card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.dark .about-card {
+  background: #09101a;
+}
+
 /* Responsive for mobile */
 @media (max-width: 640px) {
   .title-home {
@@ -179,5 +199,10 @@ button:hover, a.button:hover {
 
   .marquee-item {
     margin-right: 1rem;
+    min-width: 250px;
+  }
+
+  .marquee-container {
+    height: 150px;
   }
 }

@@ -68,7 +68,7 @@ function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
               whileTap={{ color: '#f97316' }}
               transition={{ duration: 0.3 }}
             >
-              Yumsert
+              YUMSERT
             </motion.span>
           </motion.div>
           <div className="hidden md:flex space-x-4">
