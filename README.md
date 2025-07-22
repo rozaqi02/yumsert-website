@@ -1,74 +1,72 @@
-# 🎉 Yumsert - Sweet Delight Project 🎂
+# 🎉 Yumsert - Proyek Kenikmatan Manis 🎂
 
-## 📖 Overview
-Welcome to **Yumsert**, a delightful dessert project built with love by the Ganashakti Malang team! This web application showcases a variety of sweet treats like puddings and pastries, designed to bring happiness with every bite. 🍫✨ Built using modern web technologies, Yumsert offers an engaging user experience with smooth animations and a responsive design.
+## 📖 Gambaran Umum
+Selamat datang di **Yumsert**, sebuah proyek dessert yang dibuat dengan cinta oleh tim Ganashakti Malang! Aplikasi web ini menampilkan berbagai macam camilan manis seperti puding dan kue-kue, dirancang untuk membawa kebahagiaan di setiap gigitan. 🍫✨ Dibangun dengan teknologi web modern, Yumsert menawarkan pengalaman pengguna yang menarik dengan animasi halus dan desain responsif.
 
-## 🚀 Features
-- **Delicious Product Showcase**: Explore a range of desserts under "Self Reward" and "Self Love" categories. 🥐
-- **Dynamic Animations**: Enjoy smooth transitions and marquee effects powered by Framer Motion. 🎬
-- **Theme Switching**: Switch between light and dark modes for a personalized experience. 🌞🌙
-- **Interactive UI**: Engaging UX with hover effects and scroll-based animations. 🎮
-- **Responsive Design**: Works seamlessly across all devices, from mobile to desktop. 📱💻
+## 🚀 Fitur
+- **Pameran Produk Lezat**: Jelajahi berbagai dessert di kategori "Self Reward" dan "Self Love". 🥐
+- **Animasi Dinamis**: Nikmati transisi halus dan efek marquee yang didukung oleh Framer Motion. 🎬
+- **Pemindahan Tema**: Alihkan antara mode terang dan gelap untuk pengalaman yang dipersonalisasi. 🌞🌙
+- **UI Interaktif**: Pengalaman pengguna menarik dengan efek hover dan animasi berbasis scroll. 🎮
+- **Desain Responsif**: Berfungsi mulus di semua perangkat, dari ponsel hingga desktop. 📱💻
 
-## 🛠️ Tech Stack
+## 🛠️ Teknologi yang Digunakan
 - **Frontend**: React, Framer Motion, Tailwind CSS
-- **Styling**: Custom CSS with Poppins font
-- **Tools**: Vite (for development), npm
+- **Styling**: CSS Kustom dengan font Poppins
+- **Alat**: Vite (untuk pengembangan), npm
 
-## 📂 Project Structure
-yumsert-project/
-├── src/
-│   ├── components/         # Reusable components like Navbar, Footer, ProductCard
-│   ├── assets/            # Images and static files
-│   ├── App.jsx            # Main app component
-│   ├── Home.jsx           # Home page component
-│   ├── index.css          # Global styles
-│   └── main.jsx           # Entry point
-├── public/                # Public assets
-├── package.json           # Project dependencies and scripts
-└── README.md              # This file
+## 📂 Struktur Proyek
+- `yumsert-project/`
+  - `src/`
+    - `components/`  
+      - Komponen reusable seperti Navbar, Footer, ProductCard
+    - `assets/`  
+      - File gambar dan aset statis
+    - `App.jsx`  
+      - Komponen utama aplikasi
+    - `Home.jsx`  
+      - Komponen halaman utama
+    - `index.css`  
+      - Gaya global
+    - `main.jsx`  
+      - Titik masuk aplikasi
+  - `public/`  
+    - Aset publik
+  - `package.json`  
+    - Ketergantungan proyek dan skrip
+  - `README.md`  
+    - File ini
 
-## 🌟 Installation
-1. Clone the repository:
+## 🌟 Instalasi
+1. Klon repository:
    git clone https://github.com/username/yumsert-project.git
-Navigate to the project directory:
-cd yumsert-project
+2. Masuk ke direktori proyek:
+    cd yumsert-project
+3. Instal dependensi:
+    npm install
+4. Mulai server pengembangan:
+    npm run dev
+5. Bangun untuk produksi:
+    npm run build
+6. Jalankan build produksi:
+    npm start
 
-Install dependencies:
-npm install
+## 🎨 Cara Penggunaan
+- Kunjungi halaman utama untuk melihat tagline yang berputar dan kartu produk.
+- Gulir untuk menjelajahi testimoni, FAQ, dan bagian "Tentang Kami".
+- Alihkan antara tema terang dan gelap menggunakan ikon di navbar.
+- Hubungi kami melalui tautan email atau WhatsApp yang disediakan.
 
-Start the development server:
-npm run dev
+## 🤝 Kontribusi
+    Kami menyambut kontribusi! Berikut cara Anda bisa membantu:
 
-Build for production:
-npm run build
+1. Fork repository.
+2. Buat cabang baru: git checkout -b nama-fitur.
+3. Lakukan perubahan dan commit: git commit -m "Tambah fitur".
+4. Dorong ke cabang: git push origin nama-fitur.
+5. Buka Pull Request.
 
-Run the production build:
-npm start
-
-🎨 Usage
-Visit the homepage to see the rotating taglines and product cards.
-Scroll to explore testimonials, FAQs, and the "About Us" section.
-Toggle between light and dark themes using the icon in the navbar.
-Contact us via the provided email or WhatsApp links.
-
-🤝 Contributing
-We welcome contributions! Here's how you can help:
-
-Fork the repository.
-Create a new branch: git checkout -b feature-name.
-Make your changes and commit: git commit -m "Add feature".
-Push to the branch: git push origin feature-name.
-Open a Pull Request.
-
-⚠️ Issues
-Found a bug or have a suggestion? Please open an issue on GitHub Issues.
-
-📄 License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-🙌 Acknowledgments
-Ganashakti Malang Team: For the creativity and passion behind Yumsert.
-Open Source Community: For tools like React and Framer Motion.
-
-Thanks!
+## 🙌 Pengakuan
+- Tim Ganashakti Malang: Untuk kreativitas dan semangat di balik Yumsert.
+- Komunitas Open Source: Untuk alat seperti React dan Framer Motion.
+Terima kasih!
