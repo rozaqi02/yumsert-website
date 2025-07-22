@@ -8,7 +8,7 @@ function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
+    { name: 'Beranda', href: '#home' },
     { name: 'Produk', href: '#products' },
     { name: 'Testimoni', href: '#testimonials' },
     { name: 'FAQ', href: '#faq' },
@@ -29,17 +29,15 @@ function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 120 }}
     >
-      {/* Full-width background with blur effect */}
       <div
         className="absolute inset-0"
         style={{
-          background: `rgba(var(--bg-color-rgb), 0.1)`,
+          background: theme === 'dark' ? 'rgba(10, 25, 47, 0.9)' : 'rgba(255, 255, 255, 0.9)',
           backdropFilter: 'blur(12px) saturate(1.5)',
-          WebkitBackdropFilter: 'blur(12px) saturate(1.5)', // For Safari compatibility
+          WebkitBackdropFilter: 'blur(12px) saturate(1.5)',
           boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
         }}
       >
-        {/* Glossy highlight effect */}
         <div
           className="absolute inset-0"
           style={{
@@ -49,7 +47,6 @@ function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
         />
       </div>
 
-      {/* Constrained content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="flex justify-between items-center h-16">
           <motion.div
@@ -66,7 +63,8 @@ function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
               transition={{ duration: 0.5 }}
             />
             <motion.span
-              className="text-xl font-bold text-[var(--yumsert-blue)]"
+              className="text-xl font-bold"
+              style={{ color: theme === 'dark' ? '#00A3E0' : 'var(--yumsert-blue)' }}
               whileTap={{ color: '#f97316' }}
               transition={{ duration: 0.3 }}
             >
@@ -79,7 +77,7 @@ function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
                 key={link.name}
                 href={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                className={`px-3 py-2 rounded-md text-sm font-light ${
                   activeSection === link.href.replace('#', '')
                     ? 'bg-[var(--yumsert-orange)] text-white'
                     : 'text-[var(--text-color)] hover:bg-[var(--yumsert-blue)] hover:text-white'
@@ -112,7 +110,6 @@ function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
         <motion.div
           className="md:hidden relative z-10"
@@ -120,11 +117,10 @@ function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
           animate={{ height: 'auto', opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
-          {/* Full-width background for mobile menu */}
           <div
             className="absolute inset-0"
             style={{
-              background: `rgba(var(--bg-color-rgb), 0.1)`,
+              background: theme === 'dark' ? 'rgba(10, 25, 47, 0.9)' : 'rgba(255, 255, 255, 0.9)',
               backdropFilter: 'blur(12px) saturate(1.5)',
               WebkitBackdropFilter: 'blur(12px) saturate(1.5)',
               boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
@@ -139,14 +135,13 @@ function Navbar({ theme, toggleTheme, activeSection, setActiveSection }) {
             />
           </div>
 
-          {/* Constrained content for mobile menu */}
           <div className="max-w-7xl mx-auto px-2 pt-2 pb-3 space-y-1 sm:px-3 relative z-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                className={`block px-3 py-2 rounded-md text-base font-light ${
                   activeSection === link.href.replace('#', '')
                     ? 'bg-[var(--yumsert-orange)] text-white'
                     : 'text-[var(--text-color)] hover:bg-[var(--yumsert-blue)] hover:text-white'

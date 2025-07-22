@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -13,6 +13,7 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
 /* Light mode */
@@ -20,6 +21,7 @@ html.light {
   --bg-color: #fffaf0;
   --text-color: #1e3a8a;
   --section-bg: #ffffff;
+  --particle-color: rgba(255, 182, 193, 0.3); /* Pink soft gradient for light mode */
 }
 
 /* Dark mode */
@@ -27,14 +29,11 @@ html.dark {
   --bg-color: #09101a;
   --text-color: #ffffff;
   --section-bg: #09101a;
+  --particle-color: rgba(255, 255, 255, 0.05); /* Tiny white stars for dark mode */
 }
 
 .font-poppins {
   font-family: 'Poppins', sans-serif;
-}
-
-.font-anton {
-  font-family: 'Anton', sans-serif;
 }
 
 .text-yumsert-blue {
@@ -62,7 +61,42 @@ button:hover, a.button:hover {
   background-color: var(--yumsert-orange);
 }
 
-/* Marquee untuk Testimoni, FAQ, dan Label Produk */
+/* Particle Animation */
+@keyframes float {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(15px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  background: var(--particle-color);
+  border-radius: 50%;
+  animation: float 8s infinite ease-in-out;
+}
+
+.light .particle {
+  width: 6px;
+  height: 6px;
+  box-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+}
+
+.dark .particle {
+  width: 2px;
+  height: 2px;
+}
+
+/* Marquee Animation */
 @keyframes marquee-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
@@ -104,7 +138,7 @@ button:hover, a.button:hover {
   border: 2px solid var(--yumsert-orange);
 }
 
-/* Animasi untuk Gen-Z */
+/* Additional Animations */
 @keyframes spin-slow {
   to { transform: rotate(360deg); }
 }
@@ -122,7 +156,6 @@ button:hover, a.button:hover {
   animation: spin-slow 10s linear infinite;
 }
 
-/* Animasi ketikan untuk titles utama */
 .typing-effect {
   display: inline-block;
   border-right: 2px solid var(--yumsert-blue);
@@ -134,7 +167,7 @@ button:hover, a.button:hover {
   50% { border-color: var(--yumsert-blue); }
 }
 
-/* Responsive untuk mobile */
+/* Responsive for mobile */
 @media (max-width: 640px) {
   .title-home {
     font-size: 1.8rem !important;

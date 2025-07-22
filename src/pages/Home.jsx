@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
-import ChatBubble from '../components/ChatBubble';
+import ChatBot from '../components/ChatBot';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -18,8 +18,7 @@ function Home({ theme, toggleTheme }) {
   const titleRef = useRef(null);
 
   const titles = [
-    'Dessert Vibes, Yumsert Rules! 🍰',
-    'Waktunya Kasih Self Reward 💖',
+    'Yumsert, Waktunya Kasih Self Reward 💖',
     'Manisnya Yumsert, Bikin Hati Melt! 🥳',
     'Yumsert, Sweetness Overload! 🌟',
     'Level Up Manis Bareng Yumsert! 🚀',
@@ -145,10 +144,32 @@ function Home({ theme, toggleTheme }) {
 
   return (
     <div className="min-h-screen font-poppins text-[var(--text-color)] bg-[var(--bg-color)] relative overflow-hidden">
+      {/* Fixed Particles Layer */}
+      <div className="particles fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="particle absolute rounded-full"
+            style={{
+              width: Math.random() * 3 + 2 + 'px',
+              height: Math.random() * 3 + 2 + 'px',
+              left: `${Math.random() * 100}vw`,
+              top: `${Math.random() * 100}vh`,
+              background: `var(--particle-color)`,
+              animation: `float 8s infinite ease-in-out`,
+              animationDelay: `${Math.random() * 10}s`,
+              transformOrigin: 'center',
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2, delay: Math.random() * 2 }}
+          />
+        ))}
+      </div>
       <Navbar theme={theme} toggleTheme={toggleTheme} activeSection={activeSection} setActiveSection={setActiveSection} />
       <motion.section
         id="home"
-        className="h-screen flex items-center justify-center bg-cover bg-center relative overflow-hidden"
+        className="h-screen flex items-center justify-center bg-cover bg-center relative overflow-hidden z-10"
         style={{ backgroundImage: "url('/assets/images/hero-bg.jpg')" }}
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -157,13 +178,13 @@ function Home({ theme, toggleTheme }) {
         <div className="sticker top-10 left-10 w-20 h-20 bg-gradient-to-br from-[var(--yumsert-blue)] to-[var(--yumsert-orange)] rounded-full animate-spin-slow opacity-50" />
         <div className="sticker bottom-20 right-20 w-16 h-16 bg-gradient-to-br from-[var(--yumsert-orange)] to-[var(--yumsert-blue)] rounded-full animate-spin-slow opacity-50" />
         <div className="sticker top-20 right-40 w-12 h-12 bg-[var(--yumsert-blue)] rounded-full animate-bounce opacity-50" />
-        <div className="text-center">
+        <div className="text-center z-20">
           <motion.h1
             key={currentTitle}
             ref={titleRef}
-            className={`text-4xl md:text-6xl font-bold text-[var(--yumsert-blue)] drop-shadow-lg px-4 ${
-              isTitleWrapped ? 'whitespace-normal' : 'whitespace-nowrap'
-            } typing-effect`}
+            className={`text-4xl md:text-6xl font-bold drop-shadow-lg px-4 ${isTitleWrapped ? 'whitespace-normal' : 'whitespace-nowrap'} typing-effect ${
+              theme === 'dark' ? 'text-[#00a3e0]' : 'text-[var(--yumsert-blue)]'
+            }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -185,18 +206,31 @@ function Home({ theme, toggleTheme }) {
           </div>
           <motion.button
             onClick={scrollToProducts}
-            className="mt-6 rounded-full py-3 px-6 shadow-lg bg-[var(--yumsert-orange)] text-white"
-            whileHover={{ scale: 1.1, rotate: 5 }}
+            className="mt-6 rounded-full py-3 px-6 shadow-lg bg-[var(--yumsert-orange)] text-white hover:bg-[var(--yumsert-blue)] transition-all"
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
             Lihat Produk Kami 🚀
           </motion.button>
         </div>
       </motion.section>
-      <motion.section id="products" className="py-16 bg-[var(--section-bg)] relative" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+      <motion.section
+        id="products"
+        className="py-16 bg-[var(--section-bg)] relative z-10"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <div className="sticker top-10 left-20 w-16 h-16 bg-[var(--yumsert-blue)] rounded-full animate-spin-slow" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-[var(--yumsert-blue)] text-center mb-8 animate-fade-in">Produk Kami 🥐</h2>
+          <h2
+            className={`text-4xl font-bold text-center mb-8 animate-fade-in ${
+              theme === 'dark' ? 'text-[#00a3e0]' : 'text-[var(--yumsert-blue)]'
+            }`}
+          >
+            Produk Kami 🥐
+          </h2>
           <div className="relative">
             <div className="absolute inset-0 h-1 bg-gradient-to-r from-[var(--yumsert-blue)] to-[var(--yumsert-orange)] rounded-full -top-4" />
             <h3 className="text-2xl font-semibold text-[var(--yumsert-orange)] text-center mb-2">Self Reward ✨</h3>
@@ -205,7 +239,7 @@ function Home({ theme, toggleTheme }) {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {selfReward.map((product, index) => (
-                <ProductCard key={index} {...product} />
+                <ProductCard key={index} {...product} theme={theme} />
               ))}
             </div>
           </div>
@@ -217,15 +251,28 @@ function Home({ theme, toggleTheme }) {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {selfLove.map((product, index) => (
-                <ProductCard key={index} {...product} />
+                <ProductCard key={index} {...product} theme={theme} />
               ))}
             </div>
           </div>
         </div>
       </motion.section>
-      <motion.section id="testimonials" className="py-16 bg-[var(--section-bg)] relative" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+      <motion.section
+        id="testimonials"
+        className="py-16 bg-[var(--section-bg)] relative z-10"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-[var(--yumsert-blue)] mb-8 animate-fade-in">Testimoni 💬</h2>
+          <h2
+            className={`text-4xl font-bold mb-8 animate-fade-in ${
+              theme === 'dark' ? 'text-[#00a3e0]' : 'text-[var(--yumsert-blue)]'
+            }`}
+          >
+            Testimoni 💬
+          </h2>
           <div className="space-y-4">
             <div className="marquee-container">
               <div className="marquee-content-left">
@@ -233,14 +280,14 @@ function Home({ theme, toggleTheme }) {
                   <div key={index} className="marquee-item">
                     <img src={testimonial.image} alt={testimonial.name} />
                     <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
-                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)]">- {testimonial.name}</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">- {testimonial.name}</p>
                   </div>
                 ))}
                 {testimonials.slice(0, 4).map((testimonial, index) => (
                   <div key={`duplicate-${index}`} className="marquee-item">
                     <img src={testimonial.image} alt={testimonial.name} />
                     <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
-                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)]">- {testimonial.name}</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">- {testimonial.name}</p>
                   </div>
                 ))}
               </div>
@@ -251,14 +298,14 @@ function Home({ theme, toggleTheme }) {
                   <div key={index} className="marquee-item">
                     <img src={testimonial.image} alt={testimonial.name} />
                     <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
-                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)]">- {testimonial.name}</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">- {testimonial.name}</p>
                   </div>
                 ))}
                 {testimonials.slice(4, 8).map((testimonial, index) => (
                   <div key={`duplicate-${index}`} className="marquee-item">
                     <img src={testimonial.image} alt={testimonial.name} />
                     <p className="text-[var(--text-color)] italic">"{testimonial.text}"</p>
-                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)]">- {testimonial.name}</p>
+                    <p className="mt-2 font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">- {testimonial.name}</p>
                   </div>
                 ))}
               </div>
@@ -266,23 +313,36 @@ function Home({ theme, toggleTheme }) {
           </div>
         </div>
       </motion.section>
-      <motion.section id="faq" className="py-16 bg-[var(--bg-color)] relative" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+      <motion.section
+        id="faq"
+        className="py-16 bg-[var(--bg-color)] relative z-10"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-[var(--yumsert-blue)] mb-8 animate-fade-in">FAQ ❓</h2>
+          <h2
+            className={`text-4xl font-bold mb-8 animate-fade-in ${
+              theme === 'dark' ? 'text-[#00a3e0]' : 'text-[var(--yumsert-blue)]'
+            }`}
+          >
+            FAQ ❓
+          </h2>
           <div className="space-y-4">
             <div className="marquee-container">
               <div className="marquee-content-left">
                 {faqs.slice(0, 3).map((faq, index) => (
                   <div key={index} className="marquee-item">
                     <img src={faq.image} alt="FAQ" />
-                    <h3 className="font-semibold text-[var(--yumsert-blue)]">{faq.question}</h3>
+                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">{faq.question}</h3>
                     <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
                   </div>
                 ))}
                 {faqs.slice(0, 3).map((faq, index) => (
                   <div key={`duplicate-${index}`} className="marquee-item">
                     <img src={faq.image} alt="FAQ" />
-                    <h3 className="font-semibold text-[var(--yumsert-blue)]">{faq.question}</h3>
+                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">{faq.question}</h3>
                     <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
                   </div>
                 ))}
@@ -293,14 +353,14 @@ function Home({ theme, toggleTheme }) {
                 {faqs.slice(3, 6).map((faq, index) => (
                   <div key={index} className="marquee-item">
                     <img src={faq.image} alt="FAQ" />
-                    <h3 className="font-semibold text-[var(--yumsert-blue)]">{faq.question}</h3>
+                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">{faq.question}</h3>
                     <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
                   </div>
                 ))}
                 {faqs.slice(3, 6).map((faq, index) => (
                   <div key={`duplicate-${index}`} className="marquee-item">
                     <img src={faq.image} alt="FAQ" />
-                    <h3 className="font-semibold text-[var(--yumsert-blue)]">{faq.question}</h3>
+                    <h3 className="font-semibold text-[var(--yumsert-blue)] dark:text-gray-200">{faq.question}</h3>
                     <p className="text-[var(--text-color)] mt-2">{faq.answer}</p>
                   </div>
                 ))}
@@ -309,10 +369,23 @@ function Home({ theme, toggleTheme }) {
           </div>
         </div>
       </motion.section>
-      <motion.section id="about" className="py-16 bg-[var(--bg-color)] relative" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+      <motion.section
+        id="about"
+        className="py-16 bg-[var(--bg-color)] relative z-10"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <div className="sticker top-10 right-20 w-16 h-16 bg-[var(--yumsert-orange)] rounded-full animate-spin-slow" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-[var(--yumsert-blue)] text-center mb-8 animate-fade-in">Tentang Kami 👥</h2>
+          <h2
+            className={`text-4xl font-bold text-center mb-8 animate-fade-in ${
+              theme === 'dark' ? 'text-[#00a3e0]' : 'text-[var(--yumsert-blue)]'
+            }`}
+          >
+            Tentang Kami 👥
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <motion.div
               className="relative group"
@@ -323,11 +396,11 @@ function Home({ theme, toggleTheme }) {
               <img
                 src="/assets/images/kelompok.jpg"
                 alt="Tim Ganashakti Malang"
-                className="w-full h-auto object-cover rounded-lg shadow-lg border-2 border-[var(--yumsert-blue)]"
+                className="w-full h-auto object-cover rounded-lg shadow-lg border-2 border-[var(--yumsert-blue)] dark:border-gray-700"
                 onError={(e) => (e.target.src = 'https://via.placeholder.com/400x300')}
                 loading="lazy"
               />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[var(--yumsert-blue)] bg-opacity-50 rounded-lg">
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[var(--yumsert-blue)]/50 dark:bg-gray-800/50 rounded-lg">
                 <p className="text-white text-lg font-semibold">Tim Ganashakti Malang 🎉</p>
               </div>
             </motion.div>
@@ -349,14 +422,14 @@ function Home({ theme, toggleTheme }) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <span className="text-sm font-semibold text-[#1e3a8a]">{member.name}</span>
+                    <span className="text-sm font-semibold text-[#1e3a8a] dark:text-gray-200">{member.name}</span>
                     <span className="text-xs text-[var(--text-color)]">— {member.role}</span>
                   </motion.div>
                 ))}
               </div>
               <motion.button
-                className="inline-block mt-6 rounded-full py-2 px-6 shadow-lg bg-[var(--yumsert-orange)] text-white"
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="inline-block mt-6 rounded-full py-2 px-6 shadow-lg bg-[var(--yumsert-orange)] text-white hover:bg-[var(--yumsert-blue)] transition-all"
+                whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Kenal Kami Lebih Dekat 🚀
@@ -365,26 +438,39 @@ function Home({ theme, toggleTheme }) {
           </div>
         </div>
       </motion.section>
-      <motion.section id="contact" className="py-16 bg-[var(--section-bg)] relative" variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+      <motion.section
+        id="contact"
+        className="py-16 bg-[var(--section-bg)] relative z-10"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <div className="sticker bottom-10 right-10 w-20 h-20 bg-[var(--yumsert-blue)] rounded-full animate-spin-slow" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-[var(--yumsert-blue)] mb-8 animate-fade-in">Hubungi Kami 📱</h2>
+          <h2
+            className={`text-4xl font-bold mb-8 animate-fade-in ${
+              theme === 'dark' ? 'text-[#00a3e0]' : 'text-[var(--yumsert-blue)]'
+            }`}
+          >
+            Hubungi Kami 📱
+          </h2>
           <p className="text-lg text-[var(--text-color)] mb-6">
             Ada pertanyaan? Langsung chat kami, yuk! 🚀
           </p>
           <div className="flex justify-center space-x-4">
             <motion.a
               href="mailto:yumsert.id@gmail.com"
-              className="rounded-full py-2 px-6 shadow-lg bg-[var(--yumsert-orange)] text-white"
-              whileHover={{ scale: 1.1, rotate: 5 }}
+              className="rounded-full py-2 px-6 shadow-lg bg-[var(--yumsert-orange)] text-white hover:bg-[var(--yumsert-blue)] transition-all"
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
               Email 📧
             </motion.a>
             <motion.a
               href="https://wa.me/6285158172880"
-              className="bg-green-500 text-white rounded-full py-2 px-6 shadow-lg hover:bg-green-600"
-              whileHover={{ scale: 1.1, rotate: 5 }}
+              className="bg-green-500 text-white rounded-full py-2 px-6 shadow-lg hover:bg-green-600 transition-all"
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
               WhatsApp 📲
@@ -393,7 +479,7 @@ function Home({ theme, toggleTheme }) {
         </div>
       </motion.section>
       <Footer />
-      <ChatBubble />
+      <ChatBot />
     </div>
   );
 }
