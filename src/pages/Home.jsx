@@ -18,7 +18,7 @@ function Home({ theme, toggleTheme }) {
   const titleRef = useRef(null);
 
   const titles = [
-    'Yumsert, Waktunya Kasih Self Reward 💖',
+    'Waktunya Kasih Self Reward 💖',
     'Manisnya Yumsert, Bikin Hati Melt! 🥳',
     'Yumsert, Sweetness Overload! 🌟',
     'Level Up Manis Bareng Yumsert! 🚀',
